@@ -24,5 +24,13 @@
 
     </RelativeLayout>
 
+    <GridLayout
+        android:columnCount="2"
+        android:rowCount="3"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"></GridLayout>
 
 </LinearLayout>
