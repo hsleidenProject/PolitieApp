@@ -1,7 +1,15 @@
 package com.example.yanick.politieapp;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.yanick.politieapp.Utils.MessageBox;
 
 /*
 a) De studenten leveren de projectfolder (van Android Studio) op als zip bestand.
@@ -40,14 +48,54 @@ d) De app wordt getoond aan een begeleider – de app mag dan niet crashen.
     -Student maakt verschillende interface elementen voor een app.
     -Student slaat data van de app op.
     -Student beschrijft zijn app in een verslag
-    -Student richt een API in voor gebruik met de app.*/
+    -Student richt een API in voor gebruik met de app.
+
+    x*/
 
 
 public class MainActivity extends AppCompatActivity {
+
+    List<CardView> cardViewList;
+
+    private void MessageBox(String title, String message)
+    {
+        new MessageBox(this, title, message);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        init(this);
+    }
+
+    private void init(Context context)
+    {
+        this.cardViewList = new ArrayList<CardView>();
+        this.cardViewList.add((CardView)findViewById(R.id.cardView1));
+        this.cardViewList.add((CardView)findViewById(R.id.cardView2));
+        this.cardViewList.add((CardView)findViewById(R.id.cardView3));
+        this.cardViewList.add((CardView)findViewById(R.id.cardView4));
+        this.cardViewList.add((CardView)findViewById(R.id.cardView5));
+        this.cardViewList.add((CardView)findViewById(R.id.cardView6));
+
+        for(CardView card: this.cardViewList)
+        {
+            card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    CardView card = (CardView)view;
+                    MessageBox("Debuginfo", String.valueOf(card.getId()));
+
+                    
+                    if (card.getId() == findViewById(R.id.cardView1).getId())
+                    {
+                        MessageBox("Debuginfo", "Dit is de eerste button");
+                    }
+                }
+            });
+        }
     }
 }
