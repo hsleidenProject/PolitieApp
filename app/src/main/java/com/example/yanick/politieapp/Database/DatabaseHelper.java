@@ -43,6 +43,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " + DatabaseInfo.VersionTable.VERSION + " (" +
+                BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                DatabaseInfo.VersionColom.VERSION + " DOUBLE);");
+
         db.execSQL("CREATE TABLE " + DatabaseInfo.ArtikelTables.ARTIKELEN + " (" +
                 BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DatabaseInfo.ArtikelColom.TITEL + " TEXT," +
@@ -55,6 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + DatabaseInfo.ArtikelTables.ARTIKELEN);
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseInfo.VersionTable.VERSION);
         onCreate(db);
     }
 

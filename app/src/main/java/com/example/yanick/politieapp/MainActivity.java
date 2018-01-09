@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.example.yanick.politieapp.Controller.ArtikelController;
 import com.example.yanick.politieapp.Controller.Database;
+import com.example.yanick.politieapp.Controller.UpdateController;
 import com.example.yanick.politieapp.Model.Artikel;
 import com.example.yanick.politieapp.Model.Catagorie;
 import com.example.yanick.politieapp.Utils.MessageBox;
@@ -52,9 +53,7 @@ d) De app wordt getoond aan een begeleider – de app mag dan niet crashen.
     -Student maakt verschillende interface elementen voor een app.
     -Student slaat data van de app op.
     -Student beschrijft zijn app in een verslag
-    -Student richt een API in voor gebruik met de app.
-
-    x*/
+    -Student richt een API in voor gebruik met de app.  */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,13 +70,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArtikelController controller = new ArtikelController(this);
+
+        UpdateController.UpdateDatabase(100);
+       /// new MessageBox(this, "Version Number", String.valueOf(UpdateController.getVersion(this)));
+
+        //ArtikelController controller = new ArtikelController(this);
 
         //Toevoegen nieuw test artikel
-        controller.addArtikel(new Artikel("Nog een test", "Dit is de inhoud van een artikel\nDit zou op een nieuwe regel moeten staan", (long)1515495119, Catagorie.COMMUNICATIE));
+        //controller.addArtikel(new Artikel("Nog een test", "Dit is de inhoud van een artikel\nDit zou op een nieuwe regel moeten staan", (long)1515495119, Catagorie.COMMUNICATIE));
 
         //Ophalen artikel lijst
-        controller.getArtikelen(Catagorie.COMMUNICATIE);
+        //controller.getArtikelen(Catagorie.COMMUNICATIE);
 
         init(this);
     }
@@ -100,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     CardView card = (CardView)view;
                     MessageBox("Debuginfo", String.valueOf(card.getId()));
-
 
                     if (card.getId() == findViewById(R.id.cardView1).getId())
                     {

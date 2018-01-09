@@ -16,4 +16,12 @@ public class DatabaseInfo {
         public static final String TEKST = "tekst";
         public static final String CATAGORIE = "catagorie";
     }
+
+    public class VersionTable{
+        public  static final String VERSION = "version";
+    }
+
+    public class VersionColom{
+        public static final String VERSION = "version";
+    }
 }
