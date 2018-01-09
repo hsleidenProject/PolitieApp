@@ -9,6 +9,10 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.yanick.politieapp.Controller.ArtikelController;
+import com.example.yanick.politieapp.Controller.Database;
+import com.example.yanick.politieapp.Model.Artikel;
+import com.example.yanick.politieapp.Model.Catagorie;
 import com.example.yanick.politieapp.Utils.MessageBox;
 
 /*
@@ -52,7 +56,6 @@ d) De app wordt getoond aan een begeleider – de app mag dan niet crashen.
 
     x*/
 
-
 public class MainActivity extends AppCompatActivity {
 
     List<CardView> cardViewList;
@@ -67,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ArtikelController controller = new ArtikelController(this);
+
+        //Toevoegen nieuw test artikel
+        controller.addArtikel(new Artikel("Nog een test", "Dit is de inhoud van een artikel\nDit zou op een nieuwe regel moeten staan", (long)1515495119, Catagorie.COMMUNICATIE));
+
+        //Ophalen artikel lijst
+        controller.getArtikelen(Catagorie.COMMUNICATIE);
 
         init(this);
     }
@@ -83,13 +94,14 @@ public class MainActivity extends AppCompatActivity {
 
         for(CardView card: this.cardViewList)
         {
+            //Test voor onClickListeners voor hoofdmenu
             card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     CardView card = (CardView)view;
                     MessageBox("Debuginfo", String.valueOf(card.getId()));
 
-                    
+
                     if (card.getId() == findViewById(R.id.cardView1).getId())
                     {
                         MessageBox("Debuginfo", "Dit is de eerste button");
