@@ -12,6 +12,7 @@ import java.util.List;
 import com.example.yanick.politieapp.Controller.ArtikelController;
 import com.example.yanick.politieapp.Controller.Database;
 import com.example.yanick.politieapp.Controller.UpdateController;
+import com.example.yanick.politieapp.Controller.*;
 import com.example.yanick.politieapp.Model.Artikel;
 import com.example.yanick.politieapp.Model.Catagorie;
 import com.example.yanick.politieapp.Utils.MessageBox;
@@ -72,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         UpdateController.UpdateDatabase(100);
+
+
+        Downloader downloader = new Downloader();
+        downloader.execute("https://api.icndb.com/");
+
+
        /// new MessageBox(this, "Version Number", String.valueOf(UpdateController.getVersion(this)));
 
         //ArtikelController controller = new ArtikelController(this);

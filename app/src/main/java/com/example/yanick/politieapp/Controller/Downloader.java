@@ -13,53 +13,53 @@ import java.net.URL;
  */
 
     //Wil graag een eigen class maken om de update-api te benaderen dmv een httpconnectie
-    //Krijg geen log uit httprequest functie
+    //Vage out of bounds error met het downloaden van een stukje tekst..
+    
+public class Downloader extends AsyncTask<String, Void, String> {
+
+    private Exception exception;
+
+    protected String doInBackground(String... urls) {
+        try
+        {
 
 
-class Downloader extends AsyncTask<String, String, String> {
+            HttpURLConnection urlConnection = null;
+            URL url = new URL(urls[0]);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            urlConnection.setReadTimeout(10000);
+            urlConnection.setConnectTimeout(10000);
+            urlConnection.setDoOutput(true);
+            urlConnection.connect();
 
-    private static String updateUrl = "https://api.icndb.com";
+            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+            StringBuilder string = new StringBuilder();
 
-    @Override
-    protected String doInBackground(String... f_url) {
-        int count;
-        try {
-            try {
-                HttpURLConnection urlConnection = null;
-                URL url = new URL(updateUrl);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("GET");
-                urlConnection.setReadTimeout(10000);
-                urlConnection.setConnectTimeout(10000);
-                urlConnection.setDoOutput(true);
-                urlConnection.connect();
-
-                BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-                StringBuilder string = new StringBuilder();
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    string.append(line);
-                }
-
-                reader.close();
-
-                Log.d("Debuglog", string.toString());
-
-            } catch (Exception ex) {
-                Log.d("Debuglog", ex.toString());
+            String line;
+            while ((line = reader.readLine()) != null) {
+                string.append(line);
             }
 
-        }catch (Exception exc) {
-            Log.d("Debuglog", exc.toString());
-        }
+            Log.d("Debuglog", urls[0]);
 
+            reader.close();
+
+            Log.d("Debuglog", string.toString());
+
+            return string.toString();
+
+
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
         return null;
     }
 
-    @Override
-    protected void onPreExecute() {
-
+    protected void onPostExecute(String feed) {
+        // TODO: check this.exception
+        // TODO: do something with the feed
     }
-
 }
