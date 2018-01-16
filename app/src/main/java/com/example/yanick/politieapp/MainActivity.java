@@ -1,21 +1,24 @@
 package com.example.yanick.politieapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.yanick.politieapp.Controller.ArtikelController;
-import com.example.yanick.politieapp.Controller.Database;
 import com.example.yanick.politieapp.Controller.UpdateController;
 import com.example.yanick.politieapp.Controller.*;
 import com.example.yanick.politieapp.Model.Artikel;
 import com.example.yanick.politieapp.Model.Catagorie;
 import com.example.yanick.politieapp.Utils.MessageBox;
+
+import static com.example.yanick.politieapp.R.id.cardView1;
 
 /*
 a) De studenten leveren de projectfolder (van Android Studio) op als zip bestand.
@@ -79,6 +82,15 @@ public class MainActivity extends AppCompatActivity {
         downloader.execute("https://api.icndb.com/");
 
 
+        // add artikles to db
+        /*
+        long test = 1283129383;
+
+        ArtikelController controller = new ArtikelController(this);
+
+        controller.addArtikel(new Artikel("Test artikel", "Dit is een hele grote stukje tekst om te testen", test, Catagorie.COMMUNICATIE));
+        */
+
        /// new MessageBox(this, "Version Number", String.valueOf(UpdateController.getVersion(this)));
 
         //ArtikelController controller = new ArtikelController(this);
@@ -92,29 +104,46 @@ public class MainActivity extends AppCompatActivity {
         init(this);
     }
 
+
+
     private void init(Context context)
     {
+
+
         this.cardViewList = new ArrayList<CardView>();
-        this.cardViewList.add((CardView)findViewById(R.id.cardView1));
+        this.cardViewList.add((CardView)findViewById(cardView1));
         this.cardViewList.add((CardView)findViewById(R.id.cardView2));
         this.cardViewList.add((CardView)findViewById(R.id.cardView3));
         this.cardViewList.add((CardView)findViewById(R.id.cardView4));
         this.cardViewList.add((CardView)findViewById(R.id.cardView5));
         this.cardViewList.add((CardView)findViewById(R.id.cardView6));
 
-        for(CardView card: this.cardViewList)
+        /*Button cat1 = (Button) findViewById(R.id.cardView1);
+        cat1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Category1.class);
+                startActivity(intent);
+            }
+        });*/
+
+        for(int a = 0; a < this.cardViewList.size();a++)
         {
+            CardView card = (CardView)this.cardViewList.get(a);
+            card.setTag(a);
+
             //Test voor onClickListeners voor hoofdmenu
             card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     CardView card = (CardView)view;
-                    MessageBox("Debuginfo", String.valueOf(card.getId()));
 
-                    if (card.getId() == findViewById(R.id.cardView1).getId())
-                    {
-                        MessageBox("Debuginfo", "Dit is de eerste button");
-                    }
+                    //Start new activity with the catagorie
+                    Intent intent = new Intent(MainActivity.this, CatShow.class);
+                    intent.putExtra("category", String.valueOf(card.getTag()));
+                    startActivity(intent);
+
                 }
             });
         }
