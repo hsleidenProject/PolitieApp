@@ -6,9 +6,15 @@ import android.database.Cursor;
 import android.provider.BaseColumns;
 import android.util.Log;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.yanick.politieapp.Database.DatabaseHelper;
 import com.example.yanick.politieapp.Database.DatabaseInfo;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -31,24 +37,23 @@ public class UpdateController {
         dbHelper.insert(DatabaseInfo.VersionTable.VERSION, null, value);
     }
 
-    public static int getVersion(Context context) {
-
-        //Error omdat 'Database niet bestaat' terwijl er wel een query kan draaien die db vult met info...
-        dbHelper = DatabaseHelper.getHelper(context);
-        Cursor cursor = dbHelper.query(DatabaseInfo.VersionTable.VERSION, new String[]{"*"}, null, null, null, null, null);
-        cursor.moveToFirst();
-        String version = cursor.getString(cursor.getColumnIndex(DatabaseInfo.VersionColom.VERSION));
-        return Integer.parseInt(version);
-    }
-
     public static void UpdateDatabase(long lastTimestamp) {
         //Andere methode gebruiken om te controleren of db up-todate is.
         //API returns een lijst (JSON) met nieuwe artikelen gepost na invoer timestamp
 
+        String getUrl = "https://randomuser.me/api/";
+        Log.d("Debuglog", "Requesting json");
+        JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET,  getUrl, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("Debuglog", response.toString());
+            }
 
-        new Downloader().execute();
-
-
-
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Debuglog", error.toString());
+            }
+        });
     }
 }

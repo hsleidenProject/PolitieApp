@@ -14,7 +14,7 @@ import java.net.URL;
 
     //Wil graag een eigen class maken om de update-api te benaderen dmv een httpconnectie
     //Vage out of bounds error met het downloaden van een stukje tekst..
-    
+
 public class Downloader extends AsyncTask<String, Void, String> {
 
     private Exception exception;
@@ -22,8 +22,6 @@ public class Downloader extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... urls) {
         try
         {
-
-
             HttpURLConnection urlConnection = null;
             URL url = new URL(urls[0]);
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -48,8 +46,6 @@ public class Downloader extends AsyncTask<String, Void, String> {
             Log.d("Debuglog", string.toString());
 
             return string.toString();
-
-
         }
         catch (Exception ex)
         {

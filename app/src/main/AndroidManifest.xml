@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CatShow"></activity>
+        <activity android:name=".CatShow" />
+        <activity android:name=".ArtikelAcitivty"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,8 @@
 package com.example.yanick.politieapp.Model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by 0x000000 on 3-1-2018.
  */
@@ -22,11 +25,10 @@ public class Artikel {
     public int getCatagorie() { return catagorie; }
 
     public String getDatum() {
-        //TODO: Timestamp omzetten naar datum string
-
-        return "Uninplmeented function";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        Date netDate = (new Date(this.datum));
+        return sdf.format(netDate);
     }
-
 
     public Artikel(String titel, String tekst, Long datum, int catagorie) {
         this.titel = titel;
