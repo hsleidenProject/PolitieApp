@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("text", artikel.getTekst());
         intent.putExtra("datum", artikel.getDatum());
         intent.putExtra("catagorie", artikel.getCatagorie());
-        startActivity(intent);
+        //startActivity(intent);
     }
 
     private void init(Context context)
