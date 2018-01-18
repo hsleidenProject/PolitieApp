@@ -27,9 +27,7 @@ public class Catagorie {
                 return "Getuige / Betrokkenen";
             case 5:
                 return "Doorverwijzing";
-
         }
-
         return "Onbekende catagorie";
     }
 

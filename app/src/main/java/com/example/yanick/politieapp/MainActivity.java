@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         UpdateController.UpdateDatabase(100);
         init(this);
 
-
         Artikel artikel = new Artikel("Demo Titel", "<h2>Er vrij tien maar apen bron ze zijn</h2>\n" +
                 "\n" +
                 "<p>Nu bezorgden bezwarend verdiende om te ingenieur ongunstig brandhout. Witte ellen ook prijs langs eerst reden wel die per. Welks elk drong lange stuit loopt ploeg per had. Gronds er parijs noodig of de. Den bevel gayah rijen nam hun zij. Gebruiken zee besluiten dan bloeiende oog aardschok. Geval om nu steek waren er mogen goten al.</p>\n" +
@@ -95,15 +94,10 @@ public class MainActivity extends AppCompatActivity {
                 "<p>Procede gronden in bereikt de te verdere. Zeven steel is ugong op. Ingericht brandstof er te degelijke herhaling. Jungles af planten ontdekt op. Dal systemen dikwijls verlaten dit stampers. Steenen ad en gronden gelegen de. Voeten tengka een forten voeden afzien pinang zij lot dus.</p>\n" +
                 "\n" +
                 "<p>Weelderige ongunstige en of economisch losgemaakt vaartuigen goudmijnen. Ieder is op er onder jacht af. Rijen de zaken nu kinta zulke af. Die traliewerk getaxeerde als doorzoeken ingenieurs uitstekend onderwoeld. Ik dekt liep gaan ze er goud al zijn zulk. Werkt niets de naast perak te. Heuvel minste pinang streng daarom ik in.</p>\n" +
-                "\n", (long)123123123, 1);
+                "\n", (long)123123123, 0);
 
 
-        Intent intent = new Intent(MainActivity.this, ArtikelAcitivty.class);
-        intent.putExtra("title", artikel.getTitel());
-        intent.putExtra("text", artikel.getTekst());
-        intent.putExtra("datum", artikel.getDatum());
-        intent.putExtra("catagorie", artikel.getCatagorie());
-        //startActivity(intent);
+
     }
 
     private void init(Context context)
