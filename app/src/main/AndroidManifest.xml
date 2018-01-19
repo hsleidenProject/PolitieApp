@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CatShow" />
-        <activity android:name=".ArtikelAcitivty"></activity>
+        <activity android:name=".ArtikelAcitivty" />
+        <activity android:name=".PieChartActivity"></activity>
     </application>
 
 </manifest>

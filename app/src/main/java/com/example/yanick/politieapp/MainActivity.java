@@ -95,7 +95,12 @@ public class MainActivity extends AppCompatActivity {
                 "<p>Weelderige ongunstige en of economisch losgemaakt vaartuigen goudmijnen. Ieder is op er onder jacht af. Rijen de zaken nu kinta zulke af. Die traliewerk getaxeerde als doorzoeken ingenieurs uitstekend onderwoeld. Ik dekt liep gaan ze er goud al zijn zulk. Werkt niets de naast perak te. Heuvel minste pinang streng daarom ik in.</p>\n" +
                 "\n", (long) 123123123, 0);
 
-
+        Intent intent = new Intent(MainActivity.this, ArtikelAcitivty.class);
+        intent.putExtra("title", artikel.getTitel());
+        intent.putExtra("text", artikel.getTekst());
+        intent.putExtra("datum", artikel.getDatum());
+        intent.putExtra("catagorie", artikel.getCatagorie());
+        //startActivity(intent);
     }
 
     private void init(Context context) {
@@ -126,4 +131,5 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
 }
