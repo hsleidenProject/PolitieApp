@@ -29,6 +29,7 @@ import java.net.URL;
 public class UpdateController {
 
     private static DatabaseHelper dbHelper;
+
     public static void setUpdateOnce(Context context) {
 
         dbHelper = DatabaseHelper.getHelper(context);
@@ -43,7 +44,7 @@ public class UpdateController {
 
         String getUrl = "https://randomuser.me/api/";
         Log.d("Debuglog", "Requesting json");
-        JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET,  getUrl, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET, getUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("Debuglog", response.toString());

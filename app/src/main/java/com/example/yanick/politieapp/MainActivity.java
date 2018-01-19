@@ -63,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<CardView> cardViewList;
 
-    private void MessageBox(String title, String message)
-    {
+    private void MessageBox(String title, String message) {
         new MessageBox(this, title, message);
     }
 
@@ -94,32 +93,29 @@ public class MainActivity extends AppCompatActivity {
                 "<p>Procede gronden in bereikt de te verdere. Zeven steel is ugong op. Ingericht brandstof er te degelijke herhaling. Jungles af planten ontdekt op. Dal systemen dikwijls verlaten dit stampers. Steenen ad en gronden gelegen de. Voeten tengka een forten voeden afzien pinang zij lot dus.</p>\n" +
                 "\n" +
                 "<p>Weelderige ongunstige en of economisch losgemaakt vaartuigen goudmijnen. Ieder is op er onder jacht af. Rijen de zaken nu kinta zulke af. Die traliewerk getaxeerde als doorzoeken ingenieurs uitstekend onderwoeld. Ik dekt liep gaan ze er goud al zijn zulk. Werkt niets de naast perak te. Heuvel minste pinang streng daarom ik in.</p>\n" +
-                "\n", (long)123123123, 0);
-
+                "\n", (long) 123123123, 0);
 
 
     }
 
-    private void init(Context context)
-    {
+    private void init(Context context) {
         this.cardViewList = new ArrayList<CardView>();
-        this.cardViewList.add((CardView)findViewById(cardView1));
-        this.cardViewList.add((CardView)findViewById(R.id.cardView2));
-        this.cardViewList.add((CardView)findViewById(R.id.cardView3));
-        this.cardViewList.add((CardView)findViewById(R.id.cardView4));
-        this.cardViewList.add((CardView)findViewById(R.id.cardView5));
-        this.cardViewList.add((CardView)findViewById(R.id.cardView6));
+        this.cardViewList.add((CardView) findViewById(cardView1));
+        this.cardViewList.add((CardView) findViewById(R.id.cardView2));
+        this.cardViewList.add((CardView) findViewById(R.id.cardView3));
+        this.cardViewList.add((CardView) findViewById(R.id.cardView4));
+        this.cardViewList.add((CardView) findViewById(R.id.cardView5));
+        this.cardViewList.add((CardView) findViewById(R.id.cardView6));
 
-        for(int a = 0; a < this.cardViewList.size();a++)
-        {
-            CardView card = (CardView)this.cardViewList.get(a);
+        for (int a = 0; a < this.cardViewList.size(); a++) {
+            CardView card = (CardView) this.cardViewList.get(a);
             card.setTag(a);
 
             //Test voor onClickListeners voor hoofdmenu
             card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    CardView card = (CardView)view;
+                    CardView card = (CardView) view;
 
                     //Start new activity with the catagorie
                     Intent intent = new Intent(MainActivity.this, CatShow.class);

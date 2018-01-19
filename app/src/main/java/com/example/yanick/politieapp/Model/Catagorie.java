@@ -12,8 +12,7 @@ public class Catagorie {
     public static final int GETUIGE_BETROKKENE = 4;
     public static final int DOORVERWIJZING = 5;
 
-    public static String getTitel(int catagorie)
-    {
+    public static String getTitel(int catagorie) {
         switch (catagorie) {
             case 0:
                 return "Herkenning";

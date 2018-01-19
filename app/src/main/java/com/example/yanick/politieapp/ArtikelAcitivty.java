@@ -21,9 +21,9 @@ public class ArtikelAcitivty extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_artikel_acitivty);
 
-        TextView title = (TextView)findViewById(R.id.textView1);
-        TextView header = (TextView)findViewById(R.id.textView2);
-        TextView tekst = (TextView)findViewById(R.id.textView3);
+        TextView title = (TextView) findViewById(R.id.textView1);
+        TextView header = (TextView) findViewById(R.id.textView2);
+        TextView tekst = (TextView) findViewById(R.id.textView3);
 
         title.setText(getIntent().getStringExtra("title"));
         header.setText(getIntent().getStringExtra("datum"));
