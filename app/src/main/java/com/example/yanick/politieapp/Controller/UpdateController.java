@@ -11,8 +11,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.yanick.politieapp.Database.DatabaseHelper;
 import com.example.yanick.politieapp.Database.DatabaseInfo;
+import com.example.yanick.politieapp.Model.Artikel;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,15 +40,28 @@ public class UpdateController {
         dbHelper.insert(DatabaseInfo.VersionTable.VERSION, null, value);
     }
 
-    public static void UpdateDatabase(long lastTimestamp) {
+    public static void UpdateDatabase(final Context context, long lastTimestamp) {
         //Andere methode gebruiken om te controleren of db up-todate is.
         //API returns een lijst (JSON) met nieuwe artikelen gepost na invoer timestamp
 
-        String getUrl = "https://randomuser.me/api/";
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+        String getUrl = "http://173.212.242.179/admin/test.txt";
         Log.d("Debuglog", "Requesting json");
         JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET, getUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+
+                try {
+                    Artikel artikel = new Artikel(response.getString("titel"), response.getString("tekst"), response.getLong("datum"), response.getInt("catagorie"));
+                    ArtikelController controller = new ArtikelController(context);
+                    controller.addArtikel(artikel);
+
+                } catch (org.json.JSONException ex)
+                {
+                    Log.d("Debuglog", ex.toString());
+                }
                 Log.d("Debuglog", response.toString());
             }
 
@@ -56,5 +71,7 @@ public class UpdateController {
                 Log.d("Debuglog", error.toString());
             }
         });
+
+        requestQueue.add(obreq);
     }
 }

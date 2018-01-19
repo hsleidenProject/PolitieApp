@@ -6,17 +6,24 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.yanick.politieapp.Controller.UpdateController;
 import com.example.yanick.politieapp.Controller.*;
 import com.example.yanick.politieapp.Model.Artikel;
 import com.example.yanick.politieapp.Model.Catagorie;
 import com.example.yanick.politieapp.Utils.MessageBox;
+
+import org.json.JSONObject;
 
 import static com.example.yanick.politieapp.R.id.cardView1;
 
@@ -71,8 +78,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        UpdateController.UpdateDatabase(100);
         init(this);
+
+
+        UpdateController.UpdateDatabase(this, 100);
+
 
         Artikel artikel = new Artikel("Demo Titel", "<h2>Er vrij tien maar apen bron ze zijn</h2>\n" +
                 "\n" +

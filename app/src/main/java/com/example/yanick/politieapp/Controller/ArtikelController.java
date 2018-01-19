@@ -59,4 +59,7 @@ public class ArtikelController {
         value.put(DatabaseInfo.ArtikelColom.TEKST, artikel.getTekst());
         this.dbHelper.insert(DatabaseInfo.ArtikelTables.ARTIKELEN, null, value);
     }
+
+
+
 }
