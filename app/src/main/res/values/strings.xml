@@ -3,4 +3,10 @@
     <string name="info">Info</string>
     <string name="grid_layout">GRID LAYOUT</string>
     <string name="menu">Menu</string>
+    <string name="communicatie">Communicatie</string>
+    <string name="verdachte">Verdachte</string>
+    <string name="slachtoffer">Slachtoffer</string>
+    <string name="getuige_betrokkenen">Getuige/Betrokkenen</string>
+    <string name="doorverwijzing">Doorverwijzing</string>
+    <string name="herkenning">Herkenning</string>
 </resources>

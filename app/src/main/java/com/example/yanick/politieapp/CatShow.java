@@ -55,7 +55,7 @@ public class CatShow extends AppCompatActivity {
                 View view = super.getView(position, convertView, parent);
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
-                tv.setTextColor(0xff151dff);
+                tv.setTextColor(0xff000000);
                 return view;
             }
         };

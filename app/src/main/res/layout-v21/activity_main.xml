@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context="com.example.yanick.politieapp.MainActivity">
+    tools:context="com.example.yanick.politieapp.MainActivity"
+    android:background="@drawable/bg">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
             android:id="@+id/textGrid"
             android:text="@string/menu"
             android:textSize="34sp"
-            android:textColor="@android:color/holo_blue_dark"
+            android:textColor="@android:color/black"
             android:layout_centerInParent="true" />
 
     </RelativeLayout>
@@ -42,24 +43,24 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_rowWeight="1"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="5dp"
             app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
+                android:layout_margin="15dp"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/info" />
+                    android:layout_width="140dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/eye" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -87,25 +88,25 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_rowWeight="1"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="5dp"
             app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/info" />
+                    android:layout_width="130dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/com" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Communicatie"
+                    android:text="@string/communicatie"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
@@ -128,7 +129,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_rowWeight="1"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="5dp"
             app:cardElevation="8dp">
 
             <LinearLayout
@@ -139,14 +140,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/info" />
+                    android:layout_width="130dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/verdachte" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Verdachte"
+                    android:text="@string/verdachte"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
@@ -167,7 +168,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_rowWeight="1"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="5dp"
             app:cardElevation="8dp">
 
             <LinearLayout
@@ -179,13 +180,13 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/info" />
+                    android:layout_height="120dp"
+                    android:src="@drawable/target" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Slachtoffer"
+                    android:text="@string/slachtoffer"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
@@ -208,7 +209,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_rowWeight="1"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="5dp"
             app:cardElevation="8dp">
 
             <LinearLayout
@@ -219,14 +220,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/info" />
+                    android:layout_width="160dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/getuige" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Getuige/Betrokkenen"
+                    android:text="@string/getuige_betrokkenen"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
@@ -247,7 +248,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_rowWeight="1"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="5dp"
             app:cardElevation="8dp">
 
             <LinearLayout
@@ -258,14 +259,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/info" />
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/referral" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Doorverwijzing"
+                    android:text="@string/doorverwijzing"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
