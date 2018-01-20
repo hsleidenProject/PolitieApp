@@ -28,6 +28,36 @@ public class ArtikelController {
         this.dbHelper = DatabaseHelper.getHelper(this.context);
     }
 
+    public int getArtikelCount(int catagorie)
+    {
+        return this.getArtikelen(catagorie).size();
+    }
+
+    public long getLastArtikelTimestamp()
+    {
+        try
+        {
+            //String orderBy = DatabaseInfo.ArtikelColom.DATUM + " DESC";
+            //Cursor cursor = this.dbHelper.query(DatabaseInfo.ArtikelTables.ARTIKELEN, new String[]{"*"}, null, null, null, null, orderBy);
+            //cursor.moveToFirst();
+
+
+            Cursor cursor = this.dbHelper.query(DatabaseInfo.ArtikelTables.ARTIKELEN, new String[]{"*"}, null, null, null, null, null);
+            Long datum = (long)0;
+            for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+                Long tempDatum = cursor.getLong(cursor.getColumnIndex(DatabaseInfo.ArtikelColom.DATUM));
+
+                if (tempDatum > datum)
+                    datum = tempDatum;
+            }
+
+            return datum;
+        }catch (Exception ex)
+        {
+            return 0;
+        }
+    }
+
     public ArrayList<Artikel> getArtikelen(int catagorie)
     {
         String selection = DatabaseInfo.ArtikelColom.CATAGORIE + " = ?";
@@ -55,7 +85,7 @@ public class ArtikelController {
         ContentValues value = new ContentValues();
         value.put(DatabaseInfo.ArtikelColom.TITEL, artikel.getTitel());
         value.put(DatabaseInfo.ArtikelColom.CATAGORIE, artikel.getCatagorie());
-        value.put(DatabaseInfo.ArtikelColom.DATUM, artikel.getDatum());
+        value.put(DatabaseInfo.ArtikelColom.DATUM, artikel.getRawDatum());
         value.put(DatabaseInfo.ArtikelColom.TEKST, artikel.getTekst());
         this.dbHelper.insert(DatabaseInfo.ArtikelTables.ARTIKELEN, null, value);
     }

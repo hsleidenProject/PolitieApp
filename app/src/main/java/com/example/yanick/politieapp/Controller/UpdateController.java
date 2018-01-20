@@ -31,6 +31,8 @@ import java.net.URL;
 public class UpdateController {
 
     private static DatabaseHelper dbHelper;
+    private static final String DOMAIN = "http://173.212.242.179";
+    private static final String PATH = "/android/artikel.php?timestamp=";
 
     public static void setUpdateOnce(Context context) {
 
@@ -41,28 +43,31 @@ public class UpdateController {
     }
 
     public static void UpdateDatabase(final Context context, long lastTimestamp) {
-        //Andere methode gebruiken om te controleren of db up-todate is.
-        //API returns een lijst (JSON) met nieuwe artikelen gepost na invoer timestamp
-
-
         RequestQueue requestQueue = Volley.newRequestQueue(context);
-
-        String getUrl = "http://173.212.242.179/admin/test.txt";
-        Log.d("Debuglog", "Requesting json");
+        String getUrl = DOMAIN + PATH + String.valueOf(lastTimestamp);
         JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET, getUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
-                    Artikel artikel = new Artikel(response.getString("titel"), response.getString("tekst"), response.getLong("datum"), response.getInt("catagorie"));
-                    ArtikelController controller = new ArtikelController(context);
-                    controller.addArtikel(artikel);
+                    JSONArray artikelArray = response.getJSONArray("artikelen");
+                    ArtikelController artikelController = new ArtikelController(context);
+                    for (int a = 0; a < artikelArray.length(); a++) {
+                        JSONObject art = artikelArray.getJSONObject(a);
 
-                } catch (org.json.JSONException ex)
-                {
+                        String titel = art.getString("titel");
+                        String tekst = art.getString("tekst");
+                        Long datum = art.getLong("datum");
+                        int catagorie = art.getInt("catagorie");
+
+                        Artikel artikel = new Artikel(titel, tekst, datum, catagorie);
+                        Log.d("Debuglog", "Nieuw artikel toegevoegd in lokale database: " + titel + " " + String.valueOf(datum));
+
+                        artikelController.addArtikel(artikel);
+                    }
+                } catch (org.json.JSONException ex) {
                     Log.d("Debuglog", ex.toString());
                 }
-                Log.d("Debuglog", response.toString());
             }
 
         }, new Response.ErrorListener() {
@@ -71,7 +76,6 @@ public class UpdateController {
                 Log.d("Debuglog", error.toString());
             }
         });
-
         requestQueue.add(obreq);
     }
 }

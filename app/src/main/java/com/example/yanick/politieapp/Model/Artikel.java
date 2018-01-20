@@ -1,5 +1,7 @@
 package com.example.yanick.politieapp.Model;
 
+import android.util.Log;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,6 +21,8 @@ public class Artikel {
         this.tekst = tekst;
         this.datum = datum;
         this.catagorie = catagorie;
+
+        Log.d("Debuglog", "Nieuw artikel opgebouwd: " + String.valueOf(datum));
     }
 
     public String getTitel() {
@@ -31,6 +35,11 @@ public class Artikel {
 
     public int getCatagorie() {
         return catagorie;
+    }
+
+    public long getRawDatum()
+    {
+        return datum;
     }
 
     public String getDatum() {
