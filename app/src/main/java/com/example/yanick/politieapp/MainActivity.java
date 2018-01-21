@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ import com.example.yanick.politieapp.Model.Catagorie;
 import com.example.yanick.politieapp.Utils.MessageBox;
 
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import static com.example.yanick.politieapp.R.id.cardView1;
 
@@ -81,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Debuglog", String.valueOf(artikelController.getLastArtikelTimestamp()));
         UpdateController.UpdateDatabase(this, artikelController.getLastArtikelTimestamp());
 
-
         init(this);
     }
 
@@ -112,6 +113,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
+        TextView textView = (TextView)findViewById(R.id.textGrid);
+        textView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, PieChartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

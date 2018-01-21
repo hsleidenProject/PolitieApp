@@ -22,7 +22,6 @@ public class Artikel {
         this.datum = datum;
         this.catagorie = catagorie;
 
-        Log.d("Debuglog", "Nieuw artikel opgebouwd: " + String.valueOf(datum));
     }
 
     public String getTitel() {
